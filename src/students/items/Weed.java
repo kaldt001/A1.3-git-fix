@@ -9,4 +9,12 @@ public class Weed extends Item {
     public String toString() {
         return "#";
     }
+    
+    @Override
+    public boolean died() {
+        return false;
+        
+        //Because weeds can't die.
+    }
+
 }
