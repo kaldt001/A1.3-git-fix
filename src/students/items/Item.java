@@ -50,11 +50,21 @@ public abstract class Item {
 	}
 	
 	public void tick(int age) {
-		age ++;
+		this.age ++;
 	}
 	
 	public boolean died() {
 		return age > deathAge;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+	    return this.age == ((Item) obj).getAge() &&
+	           this.deathAge == ((Item) obj).getDeathAge() &&
+	           this.maturationAge == ((Item) obj).getMaturationAge() &&
+	           Double.compare(this.monetaryValue, ((Item) obj).getMonetaryValue()) == 0;
+	}
+
+	
 }
 	
