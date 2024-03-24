@@ -66,7 +66,7 @@ public abstract class Item {
 
 	}
 	
-	@Override
+	@Override //Overriding the default java "equals()" method that all "Objects" inherit. 
 	public boolean equals(Object obj) {
 	    return this.age == ((Item) obj).getAge() &&
 	           this.deathAge == ((Item) obj).getDeathAge() &&
