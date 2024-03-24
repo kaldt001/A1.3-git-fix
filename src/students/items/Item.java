@@ -73,6 +73,8 @@ public abstract class Item {
 	           this.maturationAge == ((Item) obj).getMaturationAge() &&
 	           Double.compare(this.monetaryValue, ((Item) obj).getMonetaryValue()) == 0;
 	}
+	
+	public abstract String toString();
 
 	
 }
