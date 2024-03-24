@@ -57,6 +57,15 @@ public abstract class Item {
 		return age > deathAge;
 	}
 	
+	public double getValue() {
+	    if (this.age > this.maturationAge) {
+	        return this.monetaryValue;
+	    } else {
+	        return 0.0; 
+	    }
+
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 	    return this.age == ((Item) obj).getAge() &&
