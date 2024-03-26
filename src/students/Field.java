@@ -31,4 +31,22 @@ public class Field {
             }
         }
     }
+    
+    @Override
+    public String toString() {
+        String result = "  ";
+        for (int col = 1; col <= width; col++) {
+            result += col + " ";
+        }
+        result += "\n";
+        for (int row = 0; row < height; row++) {
+            result += (row + 1) + " ";
+            for (int col = 0; col < width; col++) {
+                result += field[row][col] + " ";
+            }
+            result += "\n";
+        }
+        return result;
+    }
+
 }
