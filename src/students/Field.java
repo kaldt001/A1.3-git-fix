@@ -6,32 +6,48 @@ import java.util.Random;
 
 public class Field {
     private Item[][] field;
+    private int height;
+    private int width;
     private Random random;
 
     public Field(int height, int width) {
+        this.height = height;
+        this.width = width;
         field = new Item[height][width];
         random = new Random();
         initializeField();
     }
 
     private void initializeField() {
-        for (int row = 0; row < field.length; row++) {
-            for (int col = 0; col < field[0].length; col++) {
+        for (int row = 0; row < height; row++) {
+            for (int col = 0; col < width; col++) {
                 field[row][col] = new Soil();
             }
         }
     }
 
     public void tick() {
-        for (int row = 0; row < field.length; row++) {
-            for (int col = 0; col < field[0].length; col++) {
+        for (int row = 0; row < height; row++) {
+            for (int col = 0; col < width; col++) {
                 Item currentItem = field[row][col];
+                
+                // Uses the tick method on the current item, based on its current age value.
                 int currentAge = currentItem.getAge(); // Getting the storing current age value in an int variable because the following tick() method needs an integer as an argument
-                currentItem.tick(currentAge); // Uses the tick method on the current item, based on its current age value.
+                currentItem.tick(currentAge);
+                
+                // The code below makes it so there is a 20% chance (represented by 0.2) to transform an instance of Soil into Weed
+                if (currentItem instanceof Soil && random.nextDouble() < 0.2) {
+                    field[row][col] = new Weed();
+                }
+                
+                // This makes it so that if an item dies, it's replaced with UntilledSoil
+                if (currentItem.died()) {
+                    field[row][col] = new UntilledSoil();
+                }
             }
         }
     }
-    
+
     @Override
     public String toString() {
         String result = "  ";
@@ -48,5 +64,4 @@ public class Field {
         }
         return result;
     }
-
 }
