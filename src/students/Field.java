@@ -64,4 +64,12 @@ public class Field {
         }
         return result;
     }
+    
+    public void till(int row, int col) {
+        if (row >= 0 && row < height && col >= 0 && col < width) // Checking for location, if in the field
+        	{
+            field[row][col] = new Soil(); // Replacing whatever that location is with some soil.
+        }
+    }
+
 }
