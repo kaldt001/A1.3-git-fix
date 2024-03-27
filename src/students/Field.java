@@ -71,5 +71,18 @@ public class Field {
             field[row][col] = new Soil(); // Replacing whatever that location is with some soil.
         }
     }
+    
+    public Item get(int row, int col) {
+        if (row >= 0 && row < height && col >= 0 && col < width) {
+            return field[row][col];
+        } else {
+            return null;
+        }
+    }
+
+    
+    
+
+
 
 }
