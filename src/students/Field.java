@@ -98,6 +98,45 @@ public class Field {
         }
         return totalValue;
     }
+    
+    public void getSummary() {
+        int applesCount = 0;
+        int grainCount = 0;
+        int soilCount = 0;
+        int untilledCount = 0;
+        int weedCount = 0;
+
+        // Calculate the counts of each item type
+        for (int row = 0; row < height; row++) {
+            for (int col = 0; col < width; col++) {
+                Item currentItem = field[row][col];
+                if (currentItem instanceof Apples) {
+                    applesCount++;
+                } else if (currentItem instanceof Grain) {
+                    grainCount++;
+                } else if (currentItem instanceof Soil) {
+                    soilCount++;
+                } else if (currentItem instanceof UntilledSoil) {
+                    untilledCount++;
+                } else if (currentItem instanceof Weed) {
+                    weedCount++;
+                }
+            }
+        }
+
+        // Calculate the total value
+        double totalValue = getValue();
+
+        // Print the summary
+        System.out.println("Apples:        " + applesCount);
+        System.out.println("Grain:         " + grainCount);
+        System.out.println("Soil:          " + soilCount);
+        System.out.println("Untilled:      " + untilledCount);
+        System.out.println("Weed:          " + weedCount);
+        System.out.println("For a total of $" + totalValue);
+        System.out.println("Total apples created: " + Apples.getGenerationCount());
+        System.out.println("Total grain created: " + Grain.getGenerationCount());
+    }
 
 
     
