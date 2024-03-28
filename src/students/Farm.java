@@ -30,6 +30,10 @@ public class Farm {
 	            System.out.println();
 
 	            String playerInput = scanner.nextLine();
+	            String[] inputParameters = playerInput.trim().split(" ");
+	            String action = inputParameters[0];
+	            int x;
+	            int y;
 	        }
 	    }
 	
