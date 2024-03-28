@@ -85,6 +85,20 @@ public class Field {
         }
     
     }
+    
+    public double getValue() {
+        double totalValue = 0.0;
+        
+        for (int row = 0; row < height; row++) // Check every single crevice of the field
+        {
+            for (int col = 0; col < width; col++) {
+                 
+                totalValue += field[row][col].getValue(); // This every point on the field, add each monetary value one by one.
+            }
+        }
+        return totalValue;
+    }
+
 
     
     
