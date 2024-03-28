@@ -17,7 +17,9 @@ public class Farm {
 
 	        while (gameIsRunning) {
 	            System.out.println(field.toString());
+	            System.out.println();
 	            System.out.println("Bank balance: $" + startingFunds);
+	            System.out.println();
 	            System.out.println("Enter your next action:");
 	            System.out.println("  t x y: till");
 	            System.out.println("  h x y: harvest");
@@ -25,6 +27,7 @@ public class Farm {
 	            System.out.println("  s: field summary");
 	            System.out.println("  w: wait");
 	            System.out.println("  q: quit");
+	            System.out.println();
 
 	            String playerInput = scanner.nextLine();
 	        }
