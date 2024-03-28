@@ -74,10 +74,16 @@ public class Field {
     
     public Item get(int row, int col) {
         if (row >= 0 && row < height && col >= 0 && col < width) {
-            return field[row][col];
-        } else {
-            return null;
+            
+            return field[row][col]; // Return the item at the specified, valid location
         }
+       
+        else {
+        	
+        return null; // Return nothing if its not in bounds
+    }
+
+
     }
 
     
