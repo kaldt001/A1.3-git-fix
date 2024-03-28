@@ -81,9 +81,9 @@ public class Field {
         else {
         	
         return null; // Return nothing if its not in bounds
-    }
-
-
+        
+        }
+    
     }
 
     
