@@ -49,7 +49,7 @@ public class Farm {
                 if ("t".equals(action)) {
                 	// Checking if there are 3 values, if not they are asked to enter a sufficient amount of inputs.
                     if (inputParameters.length < 3) {
-                        System.out.println("Missing coordinates. Please enter 't x y'.");
+                        System.out.println("Missing required input. Please enter 't x y'.");
                     } else {
                         field.till(y - 1, x - 1); // Because if the user inputs "1" they actually want the first value which is index "0"
                         System.out.println("Tilled soil at coordinates (" + x + ", " + y + ").");
@@ -57,7 +57,7 @@ public class Farm {
                 } else if ("h".equals(action)) {
                     // Checking if there are 3 values, if not they are asked to enter a sufficient amount of inputs.
                     if (inputParameters.length < 3) {
-                        System.out.println("Missing coordinates. Please enter 'h x y'.");
+                        System.out.println("Missing required input. Please enter 'h x y'.");
                     } else {
                
                         x = Integer.parseInt(inputParameters[1]);
