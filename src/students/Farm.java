@@ -85,7 +85,7 @@ public class Farm {
                             startingFunds -= Apples.getAppleCost(); // Reducing the player's money value by the amount the apple costs.
                             System.out.println("Planted apple at coordinates (" + x + ", " + y + ").");
                         } else {
-                            System.out.println("Insufficient funds to buy an apple.");
+                            System.out.println("Insufficient funds to buy an apple."); // Turn is forfeited when this message is printed as next iteration of the game play should begin.
                         }
                     }
                 }
