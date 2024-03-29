@@ -34,7 +34,18 @@ public class Farm {
 	            String action = inputParameters[0];
 	            int x;
 	            int y;
+	            
+	            
+	            if (inputParameters.length > 1) {
+	                x = Integer.parseInt(inputParameters[1]); //checking for coordinate x via index "1" because index "0" is the command itself like "p".
+	            }
+	            if (inputParameters.length > 2) {
+	                y = Integer.parseInt(inputParameters[2]); // Since coordinate x is at 1, index y is at 2 
+	            }
 	        }
+	        
+	        
+	        
 	    }
 	
 }
