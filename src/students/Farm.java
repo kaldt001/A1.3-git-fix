@@ -47,12 +47,32 @@ public class Farm {
                 }
 
                 if ("t".equals(action)) {
-                	// Checking of there are 3 values, if not they are asked to enter a sufficient amount of inputs.
+                	// Checking if there are 3 values, if not they are asked to enter a sufficient amount of inputs.
                     if (inputParameters.length < 3) {
                         System.out.println("Missing coordinates. Please enter 't x y'.");
                     } else {
                         field.till(y - 1, x - 1); // Because if the user inputs "1" they actually want the first value which is index "0"
                         System.out.println("Tilled soil at coordinates (" + x + ", " + y + ").");
+                    }
+                } else if ("h".equals(action)) {
+                    // Checking if there are 3 values, if not they are asked to enter a sufficient amount of inputs.
+                    if (inputParameters.length < 3) {
+                        System.out.println("Missing coordinates. Please enter 'h x y'.");
+                    } else {
+               
+                        x = Integer.parseInt(inputParameters[1]);
+                        y = Integer.parseInt(inputParameters[2]);
+                        // Harvesting from the specified location
+                   
+                        Item item = field.get(y - 1, x - 1);
+                        if (item instanceof Food && item.getAge() >= item.getMaturationAge()) { //checking if age is past maturation age
+                            double value = item.getValue(); //getting monetary if condition is satisfied
+                            startingFunds += value; //adding value to player's money
+                            field.till(y - 1, x - 1); // Replace harvested food with soil
+                            System.out.println("Harvested food at coordinates (" + x + ", " + y + "). Added $" + value + " to your funds."); //printing just to check correct values are being passed
+                        } else {
+                            System.out.println("No harvestable food at coordinates (" + x + ", " + y + ").");
+                        }
                     }
                 }
             }
