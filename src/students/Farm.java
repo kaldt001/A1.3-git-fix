@@ -100,9 +100,18 @@ public class Farm {
                             System.out.println("Invalid item to plant. Please choose 'a' for apple or 'g' for grain.");
                         }
                     }
+                } else if ("s".equals(action)) {
+                    field.getSummary();
+                } else if ("w".equals(action)) {
+                    field.tick();
+                } else if ("q".equals(action)) {
+                    gameIsRunning = false;
+                } else {
+                    System.out.println("Invalid action. Please try again.");
                 }
             }
         }
+        System.out.println("GG, come back later!");
     }
 }
 }
