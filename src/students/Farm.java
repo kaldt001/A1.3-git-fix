@@ -59,11 +59,9 @@ public class Farm {
                     if (inputParameters.length < 3) {
                         System.out.println("Missing required input. Please enter 'h x y'.");
                     } else {
-               
                         x = Integer.parseInt(inputParameters[1]);
                         y = Integer.parseInt(inputParameters[2]);
                         // Harvesting from the specified location
-                   
                         Item item = field.get(y - 1, x - 1);
                         if (item instanceof Food && item.getAge() >= item.getMaturationAge()) { //checking if age is past maturation age
                             double value = item.getValue(); //getting monetary if condition is satisfied
@@ -72,6 +70,22 @@ public class Farm {
                             System.out.println("Harvested food at coordinates (" + x + ", " + y + "). Added $" + value + " to your funds."); //printing just to check correct values are being passed
                         } else {
                             System.out.println("No harvestable food at coordinates (" + x + ", " + y + ").");
+                        }
+                    }
+                } else if ("p".equals(action)) {
+                    // Checking if there are 3 values, if not they are asked to enter a sufficient amount of inputs.
+                    if (inputParameters.length < 3) {
+                        System.out.println("Missing required input. Please enter 'p x y'.");
+                    } else {
+                        x = Integer.parseInt(inputParameters[1]);
+                        y = Integer.parseInt(inputParameters[2]);
+                        // Planting an apple at the specified location
+                        if (startingFunds >= Apples.getAppleCost()) { // This is checking to make sure the player actually has enough money to buy an apple
+                            field.plant(new Apples(0, 0), y - 1, x - 1); // This plants an apple at the specified location
+                            startingFunds -= Apples.getAppleCost(); // Reducing the player's money value by the amount the apple costs.
+                            System.out.println("Planted apple at coordinates (" + x + ", " + y + ").");
+                        } else {
+                            System.out.println("Insufficient funds to buy an apple.");
                         }
                     }
                 }
