@@ -136,9 +136,13 @@ public class Field {
         System.out.println("Total grain created: " + Grain.getGenerationCount());
     }
 
-    public void plant(Apples apple, int row, int col) {
+    public void plant(Item item, int row, int col) {
         if (row >= 0 && row < height && col >= 0 && col < width) {
-            field[row][col] = apple;
+            if (item instanceof Apples || item instanceof Grain) {
+                field[row][col] = item;
+            } else {
+                System.out.println("Cannot plant this item.");
+            }
         }
     }
 }

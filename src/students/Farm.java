@@ -44,10 +44,10 @@ public class Farm {
                 // A length of index 2 is equivalent to having 3 values, which would be the command and both coordinates. Index 2 is the 3rd value, coordinate y.
                 if (inputParameters.length > 2) {
                     y = Integer.parseInt(inputParameters[2]);
-                }
+         
 
                 if ("t".equals(action)) {
-                	// Checking if there are 3 values, if not they are asked to enter a sufficient amount of inputs.
+                    // Checking if there are 3 values, if not they are asked to enter a sufficient amount of inputs.
                     if (inputParameters.length < 3) {
                         System.out.println("Missing required input. Please enter 't x y'.");
                     } else {
@@ -63,9 +63,9 @@ public class Farm {
                         y = Integer.parseInt(inputParameters[2]);
                         // Harvesting from the specified location
                         Item item = field.get(y - 1, x - 1);
-                        if (item instanceof Food && item.getAge() >= item.getMaturationAge()) { //checking if age is past maturation age
-                            double value = item.getValue(); //getting monetary if condition is satisfied
-                            startingFunds += value; //adding value to player's money
+                        if (item instanceof Food && item.getAge() >= item.getMaturationAge()) { // Checking if age is past maturation age
+                            double value = item.getValue(); // Getting monetary if condition is satisfied
+                            startingFunds += value; // Adding value to player's money
                             field.till(y - 1, x - 1); // Replace harvested food with soil
                             System.out.println("Harvested food at coordinates (" + x + ", " + y + "). Added $" + value + " to your funds."); //printing just to check correct values are being passed
                         } else {
@@ -74,22 +74,35 @@ public class Farm {
                     }
                 } else if ("p".equals(action)) {
                     // Checking if there are 3 values, if not they are asked to enter a sufficient amount of inputs.
-                    if (inputParameters.length < 3) {
-                        System.out.println("Missing required input. Please enter 'p x y'.");
+                    if (inputParameters.length < 4) {
+                        System.out.println("Missing required input. Please enter 'p item x y'.");
                     } else {
-                        x = Integer.parseInt(inputParameters[1]);
-                        y = Integer.parseInt(inputParameters[2]);
-                        // Planting an apple at the specified location
-                        if (startingFunds >= Apples.getAppleCost()) { // This is checking to make sure the player actually has enough money to buy an apple
-                            field.plant(new Apples(0, 0), y - 1, x - 1); // This plants an apple at the specified location
-                            startingFunds -= Apples.getAppleCost(); // Reducing the player's money value by the amount the apple costs.
-                            System.out.println("Planted apple at coordinates (" + x + ", " + y + ").");
+                        String plantItem = inputParameters[1];
+                        x = Integer.parseInt(inputParameters[2]);
+                        y = Integer.parseInt(inputParameters[3]);
+                        if (plantItem.equals("a")) {
+                            if (startingFunds < Apples.getAppleCost()) {
+                                System.out.println("You don't have money to buy an apple.");
+                            } else {
+                                field.plant(new Apples(0, 0), y - 1, x - 1);
+                                startingFunds -= Apples.getAppleCost();
+                                System.out.println("Planted an apple at coordinates (" + x + ", " + y + ").");
+                            }
+                        } else if (plantItem.equals("g")) {
+                            if (startingFunds < Grain.getGrainCost()) {
+                                System.out.println("You don't have enough money to buy grain.");
+                            } else {
+                                field.plant(new Grain(0, 0), y - 1, x - 1);
+                                startingFunds -= Grain.getGrainCost();
+                                System.out.println("Planted grain at coordinates (" + x + ", " + y + ").");
+                            }
                         } else {
-                            System.out.println("Insufficient funds to buy an apple."); // Turn is forfeited when this message is printed as next iteration of the game play should begin.
+                            System.out.println("Invalid item to plant. Please choose 'a' for apple or 'g' for grain.");
                         }
                     }
                 }
             }
         }
     }
+}
 }
