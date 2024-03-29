@@ -137,11 +137,14 @@ public class Field {
         System.out.println("Total apples created: " + Apples.getGenerationCount());
         System.out.println("Total grain created: " + Grain.getGenerationCount());
     }
-
-
     
+    public int getHeight() {
+        return height;
+    }
     
-
+    public int getWidth() {
+        return width;
+    }
 
 
 }
