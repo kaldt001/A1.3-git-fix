@@ -10,6 +10,7 @@ public class Field {
     private int width;
     private Random random;
 
+    // This is a constructor for the field class
     public Field(int height, int width) {
         this.height = height;
         this.width = width;
@@ -18,6 +19,7 @@ public class Field {
         initializeField();
     }
 
+    // As the method's name suggests, I'm initializing the field here. (Via iterating row by row/column by column)
     private void initializeField() {
         for (int row = 0; row < height; row++) {
             for (int col = 0; col < width; col++) {
@@ -26,6 +28,7 @@ public class Field {
         }
     }
 
+    
     public void tick() {
         for (int row = 0; row < height; row++) {
             for (int col = 0; col < width; col++) {
@@ -48,6 +51,7 @@ public class Field {
         }
     }
 
+    // Represent the field as a string
     @Override
     public String toString() {
         String result = "  ";
@@ -65,6 +69,7 @@ public class Field {
         return result;
     }
 
+    // Till the soil at the specified location
     public void till(int row, int col) {
         if (row >= 0 && row < height && col >= 0 && col < width) // Checking for location, if in the field
         {
@@ -72,6 +77,7 @@ public class Field {
         }
     }
 
+    // Get the item at the specified location
     public Item get(int row, int col) {
         if (row >= 0 && row < height && col >= 0 && col < width) {
 
@@ -84,6 +90,7 @@ public class Field {
 
     }
 
+    // Calculate the total value of all items in the field
     public double getValue() {
         double totalValue = 0.0;
 
@@ -97,6 +104,7 @@ public class Field {
         return totalValue;
     }
 
+    // Print a summary of the field including counts and total value
     public void getSummary() {
         int applesCount = 0;
         int grainCount = 0;
@@ -104,7 +112,7 @@ public class Field {
         int untilledCount = 0;
         int weedCount = 0;
 
-        // Calculate the counts of each item type
+        // This calculates all the count-based values in the summary code following this block of code.
         for (int row = 0; row < height; row++) {
             for (int col = 0; col < width; col++) {
                 Item currentItem = field[row][col];
@@ -125,7 +133,7 @@ public class Field {
         // Calculate the total value
         double totalValue = getValue();
 
-        // Print the summary
+        // This creates a viewable summary of the state of the game's various attributes
         System.out.println("Apples:        " + applesCount);
         System.out.println("Grain:         " + grainCount);
         System.out.println("Soil:          " + soilCount);
@@ -136,12 +144,14 @@ public class Field {
         System.out.println("Total grain created: " + Grain.getGenerationCount());
     }
 
+    // Plant an item at the specified location, if and only if its on a soil tile.
     public void plant(Item item, int row, int col) {
         if (row >= 0 && row < height && col >= 0 && col < width) {
-            if (item instanceof Apples || item instanceof Grain) {
+            // The code below checks if the current cell is a soil toil.
+            if (field[row][col] instanceof Soil) {
                 field[row][col] = item;
             } else {
-                System.out.println("Cannot plant this item.");
+                System.out.println("Cannot plant this item. It can only be planted on soil.");
             }
         }
     }
