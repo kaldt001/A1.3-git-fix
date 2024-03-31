@@ -49,8 +49,8 @@ public abstract class Item {
 		return monetaryValue;
 	}
 	
-	public void tick(int age) {
-		this.age ++;
+	public void tick() {
+	    age++;
 	}
 	
 	public boolean died() {

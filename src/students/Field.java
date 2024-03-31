@@ -11,7 +11,7 @@ public class Field {
     private Random random;
 
     // This is a constructor for the field class
-    public Field(int height, int width) {
+    public Field(int width, int height) {
         this.height = height;
         this.width = width;
         field = new Item[height][width];
@@ -28,22 +28,21 @@ public class Field {
         }
     }
 
-    
+    // Updates the state of all items in the field for the next time step
     public void tick() {
         for (int row = 0; row < height; row++) {
             for (int col = 0; col < width; col++) {
                 Item currentItem = field[row][col];
 
-                // Uses the tick method on the current item, based on its current age value.
-                int currentAge = currentItem.getAge(); // Getting the storing current age value in an int variable because the following tick() method needs an integer as an argument
-                currentItem.tick(currentAge);
+                // Increment the age of the current item
+                currentItem.tick();
 
-                // The code below makes it so there is a 20% chance (represented by 0.2) to transform an instance of Soil into Weed
+                // Randomly transform soil into weed with a 20% chance
                 if (currentItem instanceof Soil && random.nextDouble() < 0.2) {
                     field[row][col] = new Weed();
                 }
 
-                // This makes it so that if an item dies, it's replaced with UntilledSoil
+                // Replace items that have died with untilled soil
                 if (currentItem.died()) {
                     field[row][col] = new UntilledSoil();
                 }
@@ -145,9 +144,9 @@ public class Field {
     }
 
     // Plant an item at the specified location, if and only if its on a soil tile.
-    public void plant(Item item, int row, int col) {
+    public void plant(int row, int col, Item item) {
         if (row >= 0 && row < height && col >= 0 && col < width) {
-            // The code below checks if the current cell is a soil toil.
+            // The code below checks if the current cell is a soil tile.
             if (field[row][col] instanceof Soil) {
                 field[row][col] = item;
             } else {

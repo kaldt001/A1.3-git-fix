@@ -84,7 +84,7 @@ public class Farm {
                             if (startingFunds < Apples.getAppleCost()) {
                                 System.out.println("You don't have money to buy an apple.");
                             } else {
-                                field.plant(new Apples(0, 0), y - 1, x - 1);
+                                field.plant(y - 1, x - 1, new Apples());
                                 startingFunds -= Apples.getAppleCost();
                                 System.out.println("Planted an apple at coordinates (" + x + ", " + y + ").");
                             }
@@ -92,7 +92,7 @@ public class Farm {
                             if (startingFunds < Grain.getGrainCost()) {
                                 System.out.println("You don't have enough money to buy grain.");
                             } else {
-                                field.plant(new Grain(0, 0), y - 1, x - 1);
+                                field.plant(y - 1, x - 1, new Grain());
                                 startingFunds -= Grain.getGrainCost();
                                 System.out.println("Planted grain at coordinates (" + x + ", " + y + ").");
                             }
@@ -112,6 +112,7 @@ public class Farm {
             }
         }
         System.out.println("GG, come back later!");
+        scanner.close();
     }
 }
 }
