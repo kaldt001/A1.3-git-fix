@@ -7,15 +7,18 @@ public class Farm {
     private Field field;
     private double startingFunds;
 
+    // This is just the constructor for the Farm class
     public Farm(int fieldWidth, int fieldHeight, double startingFunds) {
         this.field = new Field(fieldWidth, fieldHeight);
         this.startingFunds = startingFunds;
     }
 
+    // This makes the game run
     public void run() {
         Scanner scanner = new Scanner(System.in);
         boolean gameIsRunning = true;
 
+        // The basic game loop 
         while (gameIsRunning) {
             System.out.println(field.toString());
             System.out.println();
@@ -44,75 +47,74 @@ public class Farm {
                 // A length of index 2 is equivalent to having 3 values, which would be the command and both coordinates. Index 2 is the 3rd value, coordinate y.
                 if (inputParameters.length > 2) {
                     y = Integer.parseInt(inputParameters[2]);
-         
 
-                if ("t".equals(action)) {
-                    // Checking if there are 3 values, if not they are asked to enter a sufficient amount of inputs.
-                    if (inputParameters.length < 3) {
-                        System.out.println("Missing required input. Please enter 't x y'.");
-                    } else {
-                        field.till(y - 1, x - 1); // Because if the user inputs "1" they actually want the first value which is index "0"
-                        System.out.println("Tilled soil at coordinates (" + x + ", " + y + ").");
-                    }
-                } else if ("h".equals(action)) {
-                    // Checking if there are 3 values, if not they are asked to enter a sufficient amount of inputs.
-                    if (inputParameters.length < 3) {
-                        System.out.println("Missing required input. Please enter 'h x y'.");
-                    } else {
-                        x = Integer.parseInt(inputParameters[1]);
-                        y = Integer.parseInt(inputParameters[2]);
-                        // Harvesting from the specified location
-                        Item item = field.get(y - 1, x - 1);
-                        if (item instanceof Food && item.getAge() >= item.getMaturationAge()) { // Checking if age is past maturation age
-                            double value = item.getValue(); // Getting monetary if condition is satisfied
-                            startingFunds += value; // Adding value to player's money
-                            field.till(y - 1, x - 1); // Replace harvested food with soil
-                            System.out.println("Harvested food at coordinates (" + x + ", " + y + "). Added $" + value + " to your funds."); //printing just to check correct values are being passed
+                    if ("t".equals(action)) {
+                        // Checking if there are 3 values, if not they are asked to enter a sufficient amount of inputs.
+                        if (inputParameters.length < 3) {
+                            System.out.println("Missing required input. Please enter 't x y'.");
                         } else {
-                            System.out.println("No harvestable food at coordinates (" + x + ", " + y + ").");
+                            field.till(y - 1, x - 1); // Because if the user inputs "1" they actually want the first value which is index "0"
+                            System.out.println("Tilled soil at coordinates (" + x + ", " + y + ").");
                         }
-                    }
-                } else if ("p".equals(action)) {
-                    // Checking if there are 3 values, if not they are asked to enter a sufficient amount of inputs.
-                    if (inputParameters.length < 4) {
-                        System.out.println("Missing required input. Please enter 'p item x y'.");
-                    } else {
-                        String plantItem = inputParameters[1];
-                        x = Integer.parseInt(inputParameters[2]);
-                        y = Integer.parseInt(inputParameters[3]);
-                        if (plantItem.equals("a")) {
-                            if (startingFunds < Apples.getAppleCost()) {
-                                System.out.println("You don't have money to buy an apple.");
-                            } else {
-                                field.plant(y - 1, x - 1, new Apples());
-                                startingFunds -= Apples.getAppleCost();
-                                System.out.println("Planted an apple at coordinates (" + x + ", " + y + ").");
-                            }
-                        } else if (plantItem.equals("g")) {
-                            if (startingFunds < Grain.getGrainCost()) {
-                                System.out.println("You don't have enough money to buy grain.");
-                            } else {
-                                field.plant(y - 1, x - 1, new Grain());
-                                startingFunds -= Grain.getGrainCost();
-                                System.out.println("Planted grain at coordinates (" + x + ", " + y + ").");
-                            }
+                    } else if ("h".equals(action)) {
+                        // Checking if there are 3 values, if not they are asked to enter a sufficient amount of inputs.
+                        if (inputParameters.length < 3) {
+                            System.out.println("Missing required input. Please enter 'h x y'.");
                         } else {
-                            System.out.println("Invalid item to plant. Please choose 'a' for apple or 'g' for grain.");
+                            x = Integer.parseInt(inputParameters[1]);
+                            y = Integer.parseInt(inputParameters[2]);
+                            // Harvesting from the specified location
+                            Item item = field.get(y - 1, x - 1);
+                            if (item instanceof Food && item.getAge() >= item.getMaturationAge()) { // Checking if age is past maturation age
+                                double value = item.getValue(); // Getting monetary if condition is satisfied
+                                startingFunds += value; // Adding value to player's money
+                                field.till(y - 1, x - 1); // Replace harvested food with soil
+                                System.out.println("Harvested food at coordinates (" + x + ", " + y + "). Added $" + value + " to your funds."); //printing just to check correct values are being passed
+                            } else {
+                                System.out.println("No harvestable food at coordinates (" + x + ", " + y + ").");
+                            }
                         }
+                    } else if ("p".equals(action)) {
+                        // Checking if there are 3 values, if not they are asked to enter a sufficient amount of inputs.
+                        if (inputParameters.length < 4) {
+                            System.out.println("Missing required input. Please enter 'p item x y'.");
+                        } else {
+                            String plantItem = inputParameters[1];
+                            x = Integer.parseInt(inputParameters[2]);
+                            y = Integer.parseInt(inputParameters[3]);
+                            if (plantItem.equals("a")) {
+                                if (startingFunds < Apples.getAppleCost()) {
+                                    System.out.println("You don't have money to buy an apple.");
+                                } else {
+                                    field.plant(y - 1, x - 1, new Apples());
+                                    startingFunds -= Apples.getAppleCost();
+                                    System.out.println("Planted an apple at coordinates (" + x + ", " + y + ").");
+                                }
+                            } else if (plantItem.equals("g")) {
+                                if (startingFunds < Grain.getGrainCost()) {
+                                    System.out.println("You don't have enough money to buy grain.");
+                                } else {
+                                    field.plant(y - 1, x - 1, new Grain());
+                                    startingFunds -= Grain.getGrainCost();
+                                    System.out.println("Planted grain at coordinates (" + x + ", " + y + ").");
+                                }
+                            } else {
+                                System.out.println("Invalid item to plant. Please choose 'a' for apple or 'g' for grain.");
+                            }
+                        }
+                    } else if ("s".equals(action)) {
+                        field.getSummary();
+                    } else if ("w".equals(action)) {
+                        field.tick();
+                    } else if ("q".equals(action)) {
+                        gameIsRunning = false;
+                    } else {
+                        System.out.println("Invalid action. Please try again.");
                     }
-                } else if ("s".equals(action)) {
-                    field.getSummary();
-                } else if ("w".equals(action)) {
-                    field.tick();
-                } else if ("q".equals(action)) {
-                    gameIsRunning = false;
-                } else {
-                    System.out.println("Invalid action. Please try again.");
                 }
             }
         }
+        // This should print whenever the game stops running.
         System.out.println("GG, come back later!");
-        scanner.close();
     }
-}
 }
