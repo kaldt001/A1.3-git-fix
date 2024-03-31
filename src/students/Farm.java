@@ -76,21 +76,25 @@ public class Farm {
                         }
                     } else if ("p".equals(action)) {
                         // Checking if there are 3 values, if not they are asked to enter a sufficient amount of inputs.
-                        if (inputParameters.length < 4) {
-                            System.out.println("Missing required input. Please enter 'p item x y'.");
+                        if (inputParameters.length < 3) {
+                            System.out.println("Missing required input. Please enter 'p x y'.");
                         } else {
-                            String plantItem = inputParameters[1];
-                            x = Integer.parseInt(inputParameters[2]);
-                            y = Integer.parseInt(inputParameters[3]);
-                            if (plantItem.equals("a")) {
+                            x = Integer.parseInt(inputParameters[1]);
+                            y = Integer.parseInt(inputParameters[2]);
+                            // This should just prompt the user to select what to buy (and plant)
+                            System.out.println("Enter either:");
+                            System.out.println(" - 'a' to buy an apple");
+                            System.out.println(" - 'g' to buy grain");
+                            String buyOption = scanner.nextLine();
+                            if (buyOption.equals("a")) {
                                 if (startingFunds < Apples.getAppleCost()) {
-                                    System.out.println("You don't have money to buy an apple.");
+                                    System.out.println("You don't have enough money to buy an apple.");
                                 } else {
                                     field.plant(y - 1, x - 1, new Apples());
                                     startingFunds -= Apples.getAppleCost();
                                     System.out.println("Planted an apple at coordinates (" + x + ", " + y + ").");
                                 }
-                            } else if (plantItem.equals("g")) {
+                            } else if (buyOption.equals("g")) {
                                 if (startingFunds < Grain.getGrainCost()) {
                                     System.out.println("You don't have enough money to buy grain.");
                                 } else {
@@ -99,7 +103,7 @@ public class Farm {
                                     System.out.println("Planted grain at coordinates (" + x + ", " + y + ").");
                                 }
                             } else {
-                                System.out.println("Invalid item to plant. Please choose 'a' for apple or 'g' for grain.");
+                                System.out.println("Invalid option. Please choose 'a' or 'g'.");
                             }
                         }
                     } else if ("s".equals(action)) {
