@@ -7,13 +7,13 @@ public class Farm {
     private Field field;
     private double startingFunds;
 
-    // This is just the constructor for the Farm class
+    // Constructor for the Farm class
     public Farm(int fieldWidth, int fieldHeight, double startingFunds) {
         this.field = new Field(fieldWidth, fieldHeight);
         this.startingFunds = startingFunds;
     }
 
-    // This makes the game run
+    // Method to run the game
     public void run() {
         Scanner scanner = new Scanner(System.in);
         boolean gameIsRunning = true;
@@ -39,7 +39,7 @@ public class Farm {
                 String action = inputParameters[0];
                 int x = 0;
                 int y = 0;
-                
+
                 // A length of index 1 is equivalent to having 2 values, which would be the command at 0 and x coordinate at 1
                 if (inputParameters.length > 1) {
                     x = Integer.parseInt(inputParameters[1]);
@@ -68,8 +68,8 @@ public class Farm {
                             if (item instanceof Food && item.getAge() >= item.getMaturationAge()) { // Checking if age is past maturation age
                                 double value = item.getValue(); // Getting monetary if condition is satisfied
                                 startingFunds += value; // Adding value to player's money
-                                field.till(y - 1, x - 1); // Replace harvested food with soil
-                                System.out.println("Harvested food at coordinates (" + x + ", " + y + "). Added $" + value + " to your funds."); //printing just to check correct values are being passed
+                                field.till(y - 1, x - 1); // Resetting soil at harvested location
+                                System.out.println("Harvested food at coordinates (" + x + ", " + y + "). Added $" + value + " to your funds.");
                             } else {
                                 System.out.println("No harvestable food at coordinates (" + x + ", " + y + ").");
                             }
@@ -110,11 +110,13 @@ public class Farm {
                         field.getSummary();
                     } else if ("w".equals(action)) {
                         field.tick();
+                        continue;
                     } else if ("q".equals(action)) {
                         gameIsRunning = false;
                     } else {
                         System.out.println("Invalid action. Please try again.");
                     }
+                    field.tick(); // Ticks after every action, besides wait, as that has a continue statement.
                 }
             }
         }
