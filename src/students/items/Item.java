@@ -54,7 +54,7 @@ public abstract class Item {
 	}
 	
 	public boolean died() {
-		return age >= deathAge;
+		return age > deathAge;
 	}
 	
 	public double getValue() {

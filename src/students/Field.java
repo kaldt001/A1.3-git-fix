@@ -43,12 +43,12 @@ public class Field {
                 }
 
                 // Replace items that have died with untilled soil
-                if (currentItem.died()) {
+                if (currentItem.died() && currentItem instanceof Item && !(currentItem instanceof Weed)) {
                     field[row][col] = new UntilledSoil();
+                    } 
                 }
             }
         }
-    }
 
     // Represent the field as a string
     @Override
@@ -61,7 +61,14 @@ public class Field {
         for (int row = 0; row < height; row++) {
             result += (row + 1) + " ";
             for (int col = 0; col < width; col++) {
-                result += field[row][col] + " ";
+                Item currentItem = field[row][col];
+                if (currentItem instanceof Apples && currentItem.getAge() >= currentItem.getMaturationAge()) {
+                    result += "A ";
+                } else if (currentItem instanceof Grain && currentItem.getAge() >= currentItem.getMaturationAge()) {
+                    result += "G ";
+                } else {
+                    result += currentItem + " ";
+                }
             }
             result += "\n";
         }

@@ -7,13 +7,13 @@ public class Farm {
     private Field field;
     private double startingFunds;
 
-    // Constructor for the Farm class
+    // This is just the constructor for the Farm class
     public Farm(int fieldWidth, int fieldHeight, double startingFunds) {
         this.field = new Field(fieldWidth, fieldHeight);
         this.startingFunds = startingFunds;
     }
 
-    // Method to run the game
+    // This makes the game run
     public void run() {
         Scanner scanner = new Scanner(System.in);
         boolean gameIsRunning = true;
@@ -109,16 +109,15 @@ public class Farm {
                     } else if ("s".equals(action)) {
                         field.getSummary();
                     } else if ("w".equals(action)) {
-                        field.tick();
-                        continue;
+                        System.out.println(); 
                     } else if ("q".equals(action)) {
                         gameIsRunning = false;
                     } else {
                         System.out.println("Invalid action. Please try again.");
                     }
-                    field.tick(); // Ticks after every action, besides wait, as that has a continue statement.
+                    
                 }
-            }
+            }	field.tick(); // Ticks after every action..
         }
         // This should print whenever the game stops running.
         System.out.println("GG, come back later!");

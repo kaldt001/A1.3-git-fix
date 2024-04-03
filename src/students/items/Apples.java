@@ -27,7 +27,7 @@ public class Apples extends Food {
     
  // The Apples (not the company!) class' version of the toString method 
     public String toString() {
-        if (getAge() < getMaturationAge()) {
+        if (this.getAge() < this.getMaturationAge()) {
             return "a";
         } else {
             return "A";
