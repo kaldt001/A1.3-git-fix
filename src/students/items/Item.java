@@ -58,7 +58,7 @@ public abstract class Item {
 	}
 	
 	public double getValue() {
-	    if (this.age > this.maturationAge) {
+	    if (this.age >= this.maturationAge) {
 	        return this.monetaryValue;
 	    } else {
 	        return 0.0; 
