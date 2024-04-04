@@ -52,9 +52,17 @@ public class Farm {
                 if ("t".equals(action)) {
                 	// Checking if there are 3 values, if not they are asked to enter a sufficient amount of inputs.
                     if (inputParameters.length < 3) {
-                        System.out.println("Missing required input. Please enter 't x y'.");
+                    	System.out.println();
+                    	System.out.println("...");
+                    	System.out.println();
+                        System.out.println("You thought intently about tilling but entered the [procrastinate] state, so your brain only got halfway there.");
+                        System.out.println();
+                        System.out.println("You've already lost the time allocated to this turn, but to fully carry out the tilling process on your next attempt, input t x y.");
+                        System.out.println();
+                        System.out.println("...");
+                        System.out.println();
                     } else {
-                        field.till(y - 1, x - 1);
+                        field.till(y - 1, x - 1); // Because if the user inputs "1" they actually want the first value which is index "0"
                         System.out.println("...");
                         System.out.println();
                         System.out.println("You decided to till at coordinates (" + x + ", " + y + ").");
@@ -62,7 +70,15 @@ public class Farm {
                     }
                 } else if ("h".equals(action)) {
                     if (inputParameters.length < 3) {
-                        System.out.println("Missing required input. Please enter 'h x y'.");
+                    	System.out.println();
+                    	System.out.println("...");
+                    	System.out.println();
+                        System.out.println("You thought intently about harvesting but entered the [procrastinate] state, so your brain only got halfway there.");
+                        System.out.println();
+                        System.out.println("You've already lost the time allocated to this turn, but to fully carry out the harvesting process on your next attempt, input t x y.");
+                        System.out.println();
+                        System.out.println("...");
+                        System.out.println();
                     } else {
                         x = Integer.parseInt(inputParameters[1]);
                         y = Integer.parseInt(inputParameters[2]);
@@ -79,7 +95,15 @@ public class Farm {
                     }
                 } else if ("p".equals(action)) {
                     if (inputParameters.length < 3) {
-                        System.out.println("Missing required input. Please enter 'p x y'.");
+                    	System.out.println();
+                    	System.out.println("...");
+                    	System.out.println();
+                        System.out.println("You thought intently about planting but entered the [procrastinate] state, so your brain only got halfway there.");
+                        System.out.println();
+                        System.out.println("You've already lost the time allocated to this turn, but to fully carry out the planting process on your next attempt, input t x y.");
+                        System.out.println();
+                        System.out.println("...");
+                        System.out.println();
                     } else {
                         x = Integer.parseInt(inputParameters[1]);
                         y = Integer.parseInt(inputParameters[2]);
@@ -145,7 +169,12 @@ public class Farm {
                 field.tick(); // Ticks after every action..
             }
         }
-        // This should print whenever the game stops running.
-        System.out.println("GG, come back later!");
+        // These should print whenever the game stops running.
+        System.out.println("!");
+        System.out.println();
+        System.out.println("In a fit of rage, you decided to eviscerate your farm with a flamethrower! It's gone now.");
+        System.out.println();
+        System.out.println("It's gone now, but feel free to make a new one the next time you play Dennis' super awesome farm simulator! :D");
+        System.out.println("...");
     }
 }
