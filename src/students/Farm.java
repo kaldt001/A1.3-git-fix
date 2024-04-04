@@ -121,8 +121,10 @@ public class Farm {
                                 field.plant(y - 1, x - 1, new Apples());
                                 startingFunds -= Apples.getAppleCost();
                                 System.out.println();
-                                System.out.println("The turn passes, due to the decision you made to try planting an apple at coordinates (" + x + ", " + y + ").");
                                 System.out.println();
+                                System.out.println("The turn passes via the natural passage of time, due to the decision you made to try planting an apple at coordinates (" + x + ", " + y + ").");
+                                System.out.println();
+                                
                             }
                         } else if (buyOption.equals("g")) {
                             if (startingFunds < Grain.getGrainCost()) {
@@ -133,11 +135,21 @@ public class Farm {
                                 field.plant(y - 1, x - 1, new Grain());
                                 startingFunds -= Grain.getGrainCost();
                                 System.out.println();
-                                System.out.println("The turn passes, due to the decision you made to try planting some grain at coordinates (" + x + ", " + y + ").");
+                                System.out.println();
+                                System.out.println("The turn passes via the natural passage of time, due to the decision you made to try planting some grain at coordinates (" + x + ", " + y + ").");
                                 System.out.println();
                             }
                         } else {
-                            System.out.println("Invalid option. Please choose 'a' or 'g'.");
+                        	System.out.println();
+                        	System.out.println("...");
+                        	System.out.println();
+                            System.out.println("You decided to go to the shops and couldn't narrow down your choice on buying either an apple or grain.");
+                            System.out.println();
+                            System.out.println();
+                            System.out.println("...");
+                            System.out.println();
+                            System.out.println("You come back to your farm, noticing that it has visibily changed.");
+                            System.out.println();
                         }
                     }
                 } else if ("s".equals(action)) {

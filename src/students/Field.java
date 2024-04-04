@@ -155,15 +155,23 @@ public class Field {
     // Plant an item at the specified location, if and only if its on a soil tile.
     public void plant(int row, int col, Item item) {
         if (row >= 0 && row < height && col >= 0 && col < width) {
-            // The code below checks if the current cell is a soil tile.
+            // The code below checks if the cell being planted on is soil.
             if (field[row][col] instanceof Soil) {
                 field[row][col] = item;
             } else {
-            	System.out.println();
+                System.out.println();
                 System.out.println("You sat there and contemplated on your failed attempt at planting stuff on a spot that isn't tilled soil.");
+                System.out.println();
+                System.out.println("Hint: Try tilling it first next time!");
                 System.out.println();
                 System.out.println("Meanwhile... ");
             }
+        } else 
+        {
+        	System.out.println();
+        	System.out.println("...");
+        	System.out.println();
+        	System.out.println("And just like that, your recently purchased item was stolen by a pack of super intelligent kangaroos! Always plant within your premises.");
         }
     }
 }
