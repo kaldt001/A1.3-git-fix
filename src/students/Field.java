@@ -143,11 +143,11 @@ public class Field {
         System.out.println("Apples:        " + applesCount);
         System.out.println("Grain:         " + grainCount);
         System.out.println("Soil:          " + soilCount);
-        System.out.println("Untilled:      " + untilledCount);
+        System.out.println("Untilled soil: " + untilledCount);
         System.out.println("Weed:          " + weedCount);
-        System.out.println("For a total of $" + totalValue);
+        System.out.println("For a total farm value of: ($)" + totalValue);
         System.out.println("Total apples created: " + Apples.getGenerationCount());
-        System.out.println("Total grain created: " + Grain.getGenerationCount());
+        System.out.println("Total grain created:  " + Grain.getGenerationCount());
     }
     
     
@@ -159,7 +159,10 @@ public class Field {
             if (field[row][col] instanceof Soil) {
                 field[row][col] = item;
             } else {
-                System.out.println("Cannot plant this item. It can only be planted on soil.");
+            	System.out.println();
+                System.out.println("You sat there and contemplated on your failed attempt at planting stuff on a spot that isn't tilled soil.");
+                System.out.println();
+                System.out.println("Meanwhile... ");
             }
         }
     }
