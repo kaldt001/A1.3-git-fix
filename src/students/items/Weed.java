@@ -2,19 +2,15 @@ package students.items;
 
 public class Weed extends Item {
     public Weed() {
-        super(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, -1); 
-    }
+        super(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, -1); }
 
     @Override
-    public String toString() {
-        return "#";
-    }
+    
+    // This is the weed implementation of the toString method, which specifically represents weed objects as a  "#" symbol.
+    public String toString() {return "#"; }
     
     @Override
-    public boolean died() {
-        return false;
-        
-        //Because weeds can't die.
-    }
-
+    
+    // Because weeds can't die, this condition always ensures their "died()" boolean is always false.
+    public boolean died() {return false; }
 }

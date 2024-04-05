@@ -7,37 +7,36 @@ public class Grain extends Food {
 
     // This is the defualt constructor for Grain class
     public Grain() {
-        super(0, 2, 6, MONETARY_VALUE); // Calls the superclass constructor with specified parameters for maturation and death age
-        incrementGenerationCount(); // This increments the "numOfGrains" variable every time the constructor is used (at every instantiation).
-    }
+    	
+    	// Calls the superclass constructor with specified parameters for maturation and death age
+        super(0, 2, 6, MONETARY_VALUE); 
+        
+        // This increments the "numOfGrains" variable every time the constructor is used (at every instantiation).
+        incrementGenerationCount(); }
+    
     // This is the Grain class' constructor that takes age as a parameter, for if such a thing is required.
-    public Grain(int age) {
-        super(age, 2, 6, MONETARY_VALUE);
-        incrementGenerationCount();
-    }
+    public Grain(int age) {super(age, 2, 6, MONETARY_VALUE);
+        
+        // Everytime a grain object is created, its GenerationCount increments by 1 to keep track of that new instance.
+        incrementGenerationCount();	}
 
-    // Increments the count of grain objects
-    private static void incrementGenerationCount() {
-        generationCount++; // This method adds 1 to the numOfGrains object, used for increasing the count on the number of grains as seen above.
-    }
+    // This method increments the generationCount variable by 1, used for increasing the count on the number of grains as seen above.
+    private static void incrementGenerationCount() {generationCount++; }
 
     // Returns the total count of grain objects instantiated
-    public static int getGenerationCount() {
-        return generationCount;
-    }
+    public static int getGenerationCount() {return generationCount; }
 
     // Overrides the inherited toString() to represent a Grain object as 'g' or 'G' based on its age
     @Override
     public String toString() {
-        if (getAge() < getMaturationAge()) {
-            return "g"; // For when the grain is immature
-        } else {
-            return "G"; // For when the grain is mature
+    	
+    	// For when the grain is immature
+        if (getAge() < getMaturationAge()) {return "g"; } 
+        
+        // For when the grain is mature
+        else {return "G"; }
         }
-    }
 
     // Returns the cost of purchasing grain
-    public static double getGrainCost() {
-        return COST_OF_GRAIN;
-    }
-}
+    public static double getGrainCost() {return COST_OF_GRAIN; }
+ }

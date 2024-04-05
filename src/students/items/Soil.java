@@ -3,17 +3,17 @@ package students.items;
 public class Soil extends Item {
 
     public Soil() {
-        super(Integer.MAX_VALUE, Integer.MAX_VALUE, 0, 0.0);
-    }
+        super(Integer.MAX_VALUE, Integer.MAX_VALUE, 0, 0.0); }
 
     @Override
-    public boolean died() {
-        return false;
-     // Because like weed and untilled soil, soil can't die.
-    }
+    
+    // Because soil can't die, this condition always ensures their "died()" boolean is always false.
+    public boolean died() {return false; }
 
     @Override
-    public String toString() {
-        return ".";
-    }
+    
+    // This is the soil implementation of the toString method, which specifically represents soil objects as a  "." symbol.
+    public String toString() {return "."; }
+
 }
+
