@@ -121,7 +121,7 @@ public class Field {
                 
                 else if (currentItem instanceof Weed) {weedCount++; } } }
 
-        // This calculates the totalValue virable via the getValue method
+        // This calculates the totalValue variable via the getValue method
         double totalValue = getValue();
 
         // This creates a viewable summary of the state of the game's various attributes
