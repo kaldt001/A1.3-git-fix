@@ -178,4 +178,19 @@ public class Field {
         	System.out.println("And just like that, your recently purchased item was stolen by a pack of super intelligent kangaroos! Always plant within your premises.");
         }
     }
+    
+    public void useUberTill() {
+            for (int row = 0; row < height; row++) {
+                for (int col = 0; col < width; col++) {
+                    if (field[row][col] instanceof Weed) {
+                        field[row][col] = new Soil();
+                    }
+                }
+            }
+    }
+
 }
+    
+    
+   
+
