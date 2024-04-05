@@ -18,7 +18,19 @@ public class Farm {
 
     // This makes the game run & enacts the gameplay loop.
     public void run() {
-        
+    	
+    	// Before the gameplay loop welcome the player and student details.
+    	System.out.println();
+    	System.out.println("WELCOME TO SIM FARM: **UBER TILL RELEASE**");
+    	System.out.println("Author   : Dennis Kalongonda");
+    	System.out.println("Stud ID  : 110403237");
+    	System.out.println("Email ID : kaldt001");
+    	System.out.println("This is my own work as defined by the University's Academic Misconduct Policy.");
+    	System.out.println();
+    	System.out.println("... Farm loading");
+    	System.out.println();
+    	System.out.println();
+
     	Scanner scanner = new Scanner(System.in);
         boolean gameIsRunning = true;
 
