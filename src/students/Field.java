@@ -28,7 +28,7 @@ public class Field {
         }
     }
 
-    // Updates the state of all items in the field for the next time step
+    // Updates the age for every item on field
     public void tick() {
         for (int row = 0; row < height; row++) {
             for (int col = 0; col < width; col++) {
@@ -77,9 +77,12 @@ public class Field {
 
     // Till the soil at the specified location
     public void till(int row, int col) {
-        if (row >= 0 && row < height && col >= 0 && col < width) // Checking for location, if in the field
-        {
+        if (row >= 0 && row < height && col >= 0 && col < width) {
             field[row][col] = new Soil(); // Replacing whatever that location is with some soil.
+        } else {
+        	System.out.println();
+            System.out.println("Those coordinates aren't associated to the farm. Trespassing isn't very wise, you might get in a heap of trouble with law enforcement!");
+            System.out.println();
         }
     }
 
@@ -152,12 +155,13 @@ public class Field {
     
     
 
-    // Plant an item at the specified location, if and only if its on a soil tile.
+    // Plant an item at a specified location, if and only if its on a soil tile and within the field's height/width parameters.
     public void plant(int row, int col, Item item) {
         if (row >= 0 && row < height && col >= 0 && col < width) {
             // The code below checks if the cell being planted on is soil.
             if (field[row][col] instanceof Soil) {
                 field[row][col] = item;
+            // The Code below prints an error message whenever a player tries to plant on anything within the field besides soil
             } else {
                 System.out.println();
                 System.out.println("You sat there and contemplated on your failed attempt at planting stuff on a spot that isn't tilled soil.");

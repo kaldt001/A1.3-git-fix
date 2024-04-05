@@ -65,7 +65,7 @@ public class Farm {
                         field.till(y - 1, x - 1); // Because if the user inputs "1" they actually want the first value which is index "0"
                         System.out.println("...");
                         System.out.println();
-                        System.out.println("You decided to till at coordinates (" + x + ", " + y + ").");
+                        System.out.println("You turn was expended on your decision to till at coordinates (" + x + ", " + y + ").");
                         System.out.println();
                     }
                 } else if ("h".equals(action)) {
@@ -90,7 +90,14 @@ public class Farm {
                             field.till(y - 1, x - 1);
                             System.out.println("Harvested food at coordinates (" + x + ", " + y + "). Added $" + value + " to your funds.");
                         } else {
+                        	System.out.println();
+                        	System.out.println("...");
+                        	System.out.println();
                             System.out.println("No harvestable food at coordinates (" + x + ", " + y + ").");
+                            System.out.println();
+                            System.out.println("And while you were busy harvesting nothing, the passage of time continued!");
+                            System.out.println();
+                            
                         }
                     }
                 } else if ("p".equals(action)) {
